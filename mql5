@@ -1,0 +1,52 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                        DJI Prop MT5              |
+//|                                       forexroboteasy.com         |
+//|                                       Forex Robot Easy Team       |
+//+------------------------------------------------------------------+
+
+// Lot Size Calculation
+double CalculateLotSize(double riskLevel)
+{
+   // Implement lot size calculation based on risk level
+   double lotSize = AccountFreeMargin() * riskLevel / MarketInfo(Symbol(), MODE_MARGINREQUIRED);
+   return lotSize;
+}
+
+// Forex Market Analysis
+void AnalyzeForexMarket()
+{
+   // Implement comprehensive forex market analysis
+   // ...
+
+   // Specify necessary trading functions
+   OpenBuyOrder(Symbol(), CalculateLotSize(0.02), Ask, StopLoss, TakeProfit);
+   OpenSellOrder(Symbol(), CalculateLotSize(0.02), Bid, StopLoss, TakeProfit);
+}
+
+// Trade Optimization
+void OptimizeTradingStrategy()
+{
+   // Implement trade optimization functions to enhance trading strategies
+   // ...
+
+   // Specify necessary trading functions
+   ModifyOrder(OrderTicket(), StopLoss, TakeProfit);
+   CloseOrder(OrderTicket());
+}
+
+// Main Entry Point
+void OnTick()
+{
+   // Check if PROP firm requirements are met
+   if (MaxDrawdownPerDay() < 5 && OverallDrawdown() < 10 && MonthlyProfit() >= 10 && Leverage() <= 100)
+   {
+      // Perform forex market analysis
+      AnalyzeForexMarket();
+
+      // Perform trade optimization
+      OptimizeTradingStrategy();
+   }
+}
+
+//+------------------------------------------------------------------+
